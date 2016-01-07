@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
-  has_one :author
-  has_many :users
+  # for the author of a story
+  belongs_to :user
+
+  has_many :edits
 end

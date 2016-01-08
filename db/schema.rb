@@ -16,4 +16,38 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+=======
+  create_table "edits", force: :cascade do |t|
+    t.text     "content",    null: false
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "edits", ["story_id"], name: "index_edits_on_story_id", using: :btree
+  add_index "edits", ["user_id"], name: "index_edits_on_user_id", using: :btree
+
+  create_table "stories", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_foreign_key "edits", "stories"
+  add_foreign_key "edits", "users"
+  add_foreign_key "stories", "users"
+>>>>>>> 74fc83d204cf83b328e0262d6241ff5fb22b1c8d
 end

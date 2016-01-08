@@ -12,13 +12,12 @@ Rails.application.routes.draw do
 
   # STORIES / EDITS routes
   resources :stories, defaults: {format: :json } do
-    resources :edits, shallow: true 
+    resources :edits, shallow: true
   end
-
 
   # SESSION routes
   get '/session' => 'session#user_current', defaults: { format: :json }
-  post '/session' => 'session#create', defaults: { format: :json }
-  delete '/session' => 'session#destroy', defaults: { format: :json }
+  post '/session' => 'session#create'
+  delete '/session' => 'session#destroy'
 
 end

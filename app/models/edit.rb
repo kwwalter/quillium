@@ -1,3 +1,4 @@
 class Edit < ActiveRecord::Base
-  belongs_to :story, :class_name => 'Story'
+  belongs_to :story
+  belongs_to :user
 end

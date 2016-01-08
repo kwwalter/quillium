@@ -9,15 +9,16 @@ class SessionController < ApplicationController
       session[:session_token] = token
       user.update(session_token: token)
 
-      # are we going to use flash messages?
-      flash[:message] = "You have successfully logged in!"
+      render json: {
+        message: "login successful!"
+      }
+      redirect_to application_home_path
     else
-      # are we going to use flash messages?
-      flash[:message] = "Email/password combo does not exist!"
+      render json: {
+        message: "login failed :-("
+      }
+      redirect_to root_path
     end
-
-    # might want to redirect somewhere else?
-    redirect_to root_path
   end
 
   def destroy

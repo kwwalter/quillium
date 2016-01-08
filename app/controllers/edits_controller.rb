@@ -1,10 +1,10 @@
 class EditsController < ApplicationController
 
 	# GET /edits
-	def index	
+	def index
 		@edits = Edit.all
 
-		render json: @edits 
+		render json: @edits
 	end
 
 	# GET /edits/1
@@ -19,7 +19,11 @@ class EditsController < ApplicationController
 		if @edit.save
 			render json: @edit, status: :created, location: @edit
 		else
-			render json: @edit.errors, status: :unprocessable_entity
+			render json: {
+        error: {
+          message: @edit.errors.full_messages.to_sentence
+        }
+      }
 		end
 	end
 
@@ -28,7 +32,12 @@ class EditsController < ApplicationController
 		if @edit.update(edit_params)
 			render json: @edit
 		else
-			render json: @edit.errors, status: :unprocessable_entity
+			render json: {
+        error: {
+          message: @edit.errors.full_messages.to_sentence
+        }
+      }
+		end
 	end
 
 	# DELETE /edits/1

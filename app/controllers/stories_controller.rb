@@ -19,14 +19,11 @@ class StoriesController < ApplicationController
     if @story.save
       render json: @story, status: :created, location: @story
     else
-      # Which one to use for errors?
       render json: {
         error: {
           message: @story.errors.full_messages.to_sentence
         }
       }
-
-      # render json: @story.errors, status: :unprocessable_entity
     end
   end
 
@@ -40,7 +37,6 @@ class StoriesController < ApplicationController
           message: @story.errors.full_messages.to_sentence
         }
       }
-      # render json: @story.errors, status: :unprocessable_entity
     end
   end
 

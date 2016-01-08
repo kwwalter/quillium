@@ -13,16 +13,24 @@ class UsersController < ApplicationController
 		if @user.save
 			render json: @user, status: :created, location: @user
 		else
-			render json: @user.errors, status: :unprocessable_entity
+			render json: {
+				error: {
+					message: @user.errors.full_messages.to_sentence
+				}
+			}
 		end
 	end
 
 	# PATCH/PUT /users/1
-	def update	
+	def update
 		if @user.update(user_params)
 			render json: @user
 		else
-			render json: @user.errors, status: :unprocessable_entity
+			render json: {
+				error: {
+					message: @user.errors.full_messages.to_sentence
+				}
+			}
 		end
 	end
 

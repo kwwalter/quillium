@@ -11,13 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160106214757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "edits", force: :cascade do |t|
     t.text     "content",    null: false
     t.integer  "user_id"
@@ -49,5 +47,4 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "edits", "stories"
   add_foreign_key "edits", "users"
   add_foreign_key "stories", "users"
->>>>>>> 74fc83d204cf83b328e0262d6241ff5fb22b1c8d
 end
